@@ -1,0 +1,700 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<definitions name="WinityPro" targetNamespace="WebSnlt" xmlns:wsdlns="WebSnlt" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="WebSnlt" xmlns:tns1="SNLT_WS">
+	<types>
+		<schema targetNamespace="WebSnlt" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified">
+			<import namespace="SNLT_WS" />
+			<complexType name="Preventivi">
+				<sequence>
+					<element name="Testata" type="tns:PreWinity.Testata">
+					</element>
+					<element name="Preventivi">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" maxOccurs="unbounded" name="Preventivo" type="tns:PreWinity.Preventivo">
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Testata">
+				<sequence>
+					<element name="Data_Invio" type="xsd:string">
+					</element>
+					<element name="Num_Preventivi" type="xsd:byte">
+					</element>
+					<element name="Fornitore" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPreWinity.Preventivo">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" name="PreWinity.Preventivo" type="tns:PreWinity.Preventivo">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Preventivo">
+				<sequence>
+					<element name="id" type="xsd:short">
+					</element>
+					<element name="Dati_Generali" type="tns:PreWinity.Preventivo.Dati_Generali">
+					</element>
+					<element name="Dati_Officina" type="tns:PreWinity.Preventivo.Dati_Officina">
+					</element>
+					<element name="Dati_Cliente" type="tns:PreWinity.Preventivo.Dati_Cliente">
+					</element>
+					<element name="Allegati">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" maxOccurs="unbounded" name="AllegatiItem" type="tns:PreWinity.Preventivo.AllegatiItem">
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element name="Ricambi">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" maxOccurs="unbounded" name="Ricambio" type="tns:PreWinity.Preventivo.Ricambio">
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+					<element name="Dati_Pneus">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" maxOccurs="unbounded" name="Dati_Pneu" type="tns:PreWinity.Preventivo.Dati_Pneu">
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Preventivo.Dati_Generali">
+				<sequence>
+					<element name="Targa" type="xsd:string">
+					</element>
+					<element name="Marca" type="xsd:string">
+					</element>
+					<element name="Tipo" type="xsd:string">
+					</element>
+					<element name="Modello" type="xsd:string">
+					</element>
+					<element name="Data_Prev" type="xsd:string">
+					</element>
+					<element name="Num_Pratica" type="xsd:string">
+					</element>
+					<element name="Km_Reali" type="xsd:int">
+					</element>
+					<element name="Data_Entr_veicolo" type="xsd:string">
+					</element>
+					<element name="Data_Fine_Intervento" type="xsd:string">
+					</element>
+					<element name="Causale_Intervento" type="xsd:string">
+					</element>
+					<element name="NoteGommista" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Preventivo.Dati_Officina">
+				<sequence>
+					<element name="Ragione_Rip" type="xsd:string">
+					</element>
+					<element name="Indirizzo_Rip" type="xsd:string">
+					</element>
+					<element name="Cap_Rip" type="xsd:int">
+					</element>
+					<element name="Loc_Rip" type="xsd:string">
+					</element>
+					<element name="PIva_Rip" type="xsd:string">
+					</element>
+					<element name="Tel_Rip" type="xsd:string">
+					</element>
+					<element name="Fax_Rip" type="xsd:string">
+					</element>
+					<element name="EMail_Rip" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Preventivo.Dati_Cliente">
+				<sequence>
+					<element name="Nome_Cli" type="xsd:string">
+					</element>
+					<element name="Indirizzo_Cli" type="xsd:string">
+					</element>
+					<element name="Cap_Cli" type="xsd:int">
+					</element>
+					<element name="Loc_Cli" type="xsd:string">
+					</element>
+					<element name="PIva_Cli" type="xsd:string">
+					</element>
+					<element name="Tel_Cli" type="xsd:string">
+					</element>
+					<element name="Fax_Cli" type="xsd:string">
+					</element>
+					<element name="Email_Cli" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPreWinity.Preventivo.AllegatiItem">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" name="PreWinity.Preventivo.AllegatiItem" type="tns:PreWinity.Preventivo.AllegatiItem">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Preventivo.AllegatiItem">
+				<sequence>
+					<element name="RicAlPrg" type="xsd:long">
+					</element>
+					<element name="RicAllTipo" type="xsd:string">
+					</element>
+					<element name="RicAllNote" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPreWinity.Preventivo.Ricambio">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" name="PreWinity.Preventivo.Ricambio" type="tns:PreWinity.Preventivo.Ricambio">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Preventivo.Ricambio">
+				<sequence>
+					<element name="IdDettaglio" type="xsd:short">
+					</element>
+					<element name="Prog_Pezzo_Ric" type="xsd:byte">
+					</element>
+					<element name="Tipo_Ric" type="xsd:string">
+					</element>
+					<element name="Pezzo_Ric" type="xsd:string">
+					</element>
+					<element name="Tipo_Periodicita" type="xsd:string">
+					</element>
+					<element name="Periodicita" type="xsd:double">
+					</element>
+					<element name="Prz_Unit" type="xsd:double">
+					</element>
+					<element name="Prz_Imp" type="xsd:double">
+					</element>
+					<element name="Prz_Iva" type="xsd:double">
+					</element>
+					<element name="Prz_Sconto" type="xsd:double">
+					</element>
+					<element name="Prz_Netto" type="xsd:double">
+					</element>
+					<element name="Prz_Tot" type="xsd:double">
+					</element>
+					<element name="Marca" type="xsd:string">
+					</element>
+					<element name="IPCode" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPreWinity.Preventivo.Dati_Pneu">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" name="PreWinity.Preventivo.Dati_Pneu" type="tns:PreWinity.Preventivo.Dati_Pneu">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinity.Preventivo.Dati_Pneu">
+				<sequence>
+					<element name="IdDettaglio" type="xsd:short">
+					</element>
+					<element name="Pneu_Desc" type="xsd:string">
+					</element>
+					<element name="Pneu_Art_Old" type="xsd:string">
+					</element>
+					<element name="Pneu_DOT_Old" type="xsd:string">
+					</element>
+					<element name="Pneu_mm_Old" type="xsd:double">
+					</element>
+					<element name="Pneu_Mag" type="xsd:string">
+					</element>
+					<element name="Pneu_Cli" type="xsd:string">
+					</element>
+					<element name="Pneu_Smalt" type="xsd:string">
+					</element>
+					<element name="Pneu_Art_New" type="xsd:string">
+					</element>
+					<element name="Pneu_DOT_New" type="xsd:string">
+					</element>
+					<element name="Pneu_mm_New" type="xsd:double">
+					</element>
+					<element name="Pneu_Larghezza" type="xsd:string">
+					</element>
+					<element name="Pneu_Serie" type="xsd:string">
+					</element>
+					<element name="Pneu_Cerchio" type="xsd:string">
+					</element>
+					<element name="Pneu_Velocita" type="xsd:string">
+					</element>
+					<element name="Pneu_IndCar" type="xsd:string">
+					</element>
+					<element name="Pneus_Stagionalita" type="xsd:string">
+					</element>
+					<element name="Pneus_Marca_New" type="xsd:string">
+					</element>
+					<element name="Pneus_Marca_Old" type="xsd:string">
+					</element>
+					<element name="Pneus_Stagionalita_Old" type="xsd:string">
+					</element>
+					<element name="Pneus_Larghezza_Old" type="xsd:string">
+					</element>
+					<element name="Pneus_Serie_Old" type="xsd:string">
+					</element>
+					<element name="Pneus_Cerchio_Old" type="xsd:string">
+					</element>
+					<element name="Pneus_Velocita_Old" type="xsd:string">
+					</element>
+					<element name="Pneus_IndCar_Old" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinityEsecuzione">
+				<sequence>
+					<element name="Testata" type="tns:PreWinityEsecuzione.Testata">
+					</element>
+					<element name="Preventivi">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" maxOccurs="unbounded" name="Preventivo" type="tns:PreWinityEsecuzione.Preventivo">
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinityEsecuzione.Testata">
+				<sequence>
+					<element name="Data_Invio" type="xsd:string">
+					</element>
+					<element name="Fornitore" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPreWinityEsecuzione.Preventivo">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" name="PreWinityEsecuzione.Preventivo" type="tns:PreWinityEsecuzione.Preventivo">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinityEsecuzione.Preventivo">
+				<sequence>
+					<element name="Num_Pratica" type="xsd:string">
+					</element>
+					<element name="Esecuzione" type="xsd:string">
+					</element>
+					<element name="Dati_Pneus">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" maxOccurs="unbounded" name="Dati_Pneu" type="tns:PreWinityEsecuzione.Preventivo.Dati_Pneu">
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPreWinityEsecuzione.Preventivo.Dati_Pneu">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" name="PreWinityEsecuzione.Preventivo.Dati_Pneu" type="tns:PreWinityEsecuzione.Preventivo.Dati_Pneu">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinityEsecuzione.Preventivo.Dati_Pneu">
+				<sequence>
+					<element name="Pneu_Desc" type="xsd:string">
+					</element>
+					<element name="Pneu_DOT" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinityAnnullamento">
+				<sequence>
+					<element name="Testata" type="tns:PreWinityAnnullamento.Testata">
+					</element>
+					<element name="Preventivi">
+						<complexType>
+							<sequence>
+								<element minOccurs="0" maxOccurs="unbounded" name="Preventivo" type="tns:PreWinityAnnullamento.Preventivo">
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinityAnnullamento.Testata">
+				<sequence>
+					<element name="Data_Invio" type="xsd:string">
+					</element>
+					<element name="Fornitore" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfPreWinityAnnullamento.Preventivo">
+				<sequence>
+					<element minOccurs="0" maxOccurs="unbounded" name="PreWinityAnnullamento.Preventivo" type="tns:PreWinityAnnullamento.Preventivo">
+					</element>
+				</sequence>
+			</complexType>
+			<complexType name="PreWinityAnnullamento.Preventivo">
+				<sequence>
+					<element name="Num_Pratica" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+			<element name="WinityPro.GETPREVENTIVIAPERTI">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.GETPREVENTIVIAPERTIResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Prewinity" type="tns:Preventivi" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.APPROVAPREVENTIVO">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Num_pratica" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Notaaut_pratica" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Dataaut_pratica" type="xsd:dateTime" />
+						<element minOccurs="1" maxOccurs="1" name="Numauto_pratica" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.APPROVAPREVENTIVOResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Errore" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.RIFIUTARICHIESTA">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Num_pratica" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Notaaut_pratica" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Dataaut_pratica" type="xsd:dateTime" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.RIFIUTARICHIESTAResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Errore" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.CONFERMARICEZIONE">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Num_pratica" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.CONFERMARICEZIONEResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Errore" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATA">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATAResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Prewinityesecuzione" type="tns:PreWinityEsecuzione" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.CONFERMARICEZIONEDATAESECUZIONE">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Num_pratica" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.CONFERMARICEZIONEDATAESECUZIONEResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Errore" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.GETALLEGATO">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Num_pratica" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Num_allegato" type="xsd:long" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.GETALLEGATOResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Allegatopratica" type="tns1:AllegatoPratica" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.ELENCOPREVENTIVIANNULLATI">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.ELENCOPREVENTIVIANNULLATIResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Prewinityannullamento" type="tns:PreWinityAnnullamento" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATI">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Socwinitypro" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrcod" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Usrpwd" type="xsd:string" />
+						<element minOccurs="1" maxOccurs="1" name="Num_pratica" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATIResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="Errore" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+		<schema targetNamespace="SNLT_WS" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified">
+			<import namespace="WebSnlt" />
+			<complexType name="AllegatoPratica">
+				<sequence>
+					<element name="RicCod" type="xsd:long">
+					</element>
+					<element name="RicAlPrg" type="xsd:long">
+					</element>
+					<element name="RicAll" type="xsd:string">
+					</element>
+					<element name="RicAllEst" type="xsd:string">
+					</element>
+					<element name="RicAllNom" type="xsd:string">
+					</element>
+				</sequence>
+			</complexType>
+		</schema>
+	</types>
+	<message name="WinityPro.GETPREVENTIVIAPERTISoapIn">
+		<part name="parameters" element="tns:WinityPro.GETPREVENTIVIAPERTI" />
+	</message>
+	<message name="WinityPro.GETPREVENTIVIAPERTISoapOut">
+		<part name="parameters" element="tns:WinityPro.GETPREVENTIVIAPERTIResponse" />
+	</message>
+	<message name="WinityPro.APPROVAPREVENTIVOSoapIn">
+		<part name="parameters" element="tns:WinityPro.APPROVAPREVENTIVO" />
+	</message>
+	<message name="WinityPro.APPROVAPREVENTIVOSoapOut">
+		<part name="parameters" element="tns:WinityPro.APPROVAPREVENTIVOResponse" />
+	</message>
+	<message name="WinityPro.RIFIUTARICHIESTASoapIn">
+		<part name="parameters" element="tns:WinityPro.RIFIUTARICHIESTA" />
+	</message>
+	<message name="WinityPro.RIFIUTARICHIESTASoapOut">
+		<part name="parameters" element="tns:WinityPro.RIFIUTARICHIESTAResponse" />
+	</message>
+	<message name="WinityPro.CONFERMARICEZIONESoapIn">
+		<part name="parameters" element="tns:WinityPro.CONFERMARICEZIONE" />
+	</message>
+	<message name="WinityPro.CONFERMARICEZIONESoapOut">
+		<part name="parameters" element="tns:WinityPro.CONFERMARICEZIONEResponse" />
+	</message>
+	<message name="WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATASoapIn">
+		<part name="parameters" element="tns:WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATA" />
+	</message>
+	<message name="WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATASoapOut">
+		<part name="parameters" element="tns:WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATAResponse" />
+	</message>
+	<message name="WinityPro.CONFERMARICEZIONEDATAESECUZIONESoapIn">
+		<part name="parameters" element="tns:WinityPro.CONFERMARICEZIONEDATAESECUZIONE" />
+	</message>
+	<message name="WinityPro.CONFERMARICEZIONEDATAESECUZIONESoapOut">
+		<part name="parameters" element="tns:WinityPro.CONFERMARICEZIONEDATAESECUZIONEResponse" />
+	</message>
+	<message name="WinityPro.GETALLEGATOSoapIn">
+		<part name="parameters" element="tns:WinityPro.GETALLEGATO" />
+	</message>
+	<message name="WinityPro.GETALLEGATOSoapOut">
+		<part name="parameters" element="tns:WinityPro.GETALLEGATOResponse" />
+	</message>
+	<message name="WinityPro.ELENCOPREVENTIVIANNULLATISoapIn">
+		<part name="parameters" element="tns:WinityPro.ELENCOPREVENTIVIANNULLATI" />
+	</message>
+	<message name="WinityPro.ELENCOPREVENTIVIANNULLATISoapOut">
+		<part name="parameters" element="tns:WinityPro.ELENCOPREVENTIVIANNULLATIResponse" />
+	</message>
+	<message name="WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATISoapIn">
+		<part name="parameters" element="tns:WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATI" />
+	</message>
+	<message name="WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATISoapOut">
+		<part name="parameters" element="tns:WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATIResponse" />
+	</message>
+	<portType name="WinityProSoapPort">
+		<operation name="GETPREVENTIVIAPERTI">
+			<input message="wsdlns:WinityPro.GETPREVENTIVIAPERTISoapIn" />
+			<output message="wsdlns:WinityPro.GETPREVENTIVIAPERTISoapOut" />
+		</operation>
+		<operation name="APPROVAPREVENTIVO">
+			<input message="wsdlns:WinityPro.APPROVAPREVENTIVOSoapIn" />
+			<output message="wsdlns:WinityPro.APPROVAPREVENTIVOSoapOut" />
+		</operation>
+		<operation name="RIFIUTARICHIESTA">
+			<input message="wsdlns:WinityPro.RIFIUTARICHIESTASoapIn" />
+			<output message="wsdlns:WinityPro.RIFIUTARICHIESTASoapOut" />
+		</operation>
+		<operation name="CONFERMARICEZIONE">
+			<input message="wsdlns:WinityPro.CONFERMARICEZIONESoapIn" />
+			<output message="wsdlns:WinityPro.CONFERMARICEZIONESoapOut" />
+		</operation>
+		<operation name="ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATA">
+			<input message="wsdlns:WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATASoapIn" />
+			<output message="wsdlns:WinityPro.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATASoapOut" />
+		</operation>
+		<operation name="CONFERMARICEZIONEDATAESECUZIONE">
+			<input message="wsdlns:WinityPro.CONFERMARICEZIONEDATAESECUZIONESoapIn" />
+			<output message="wsdlns:WinityPro.CONFERMARICEZIONEDATAESECUZIONESoapOut" />
+		</operation>
+		<operation name="GETALLEGATO">
+			<input message="wsdlns:WinityPro.GETALLEGATOSoapIn" />
+			<output message="wsdlns:WinityPro.GETALLEGATOSoapOut" />
+		</operation>
+		<operation name="ELENCOPREVENTIVIANNULLATI">
+			<input message="wsdlns:WinityPro.ELENCOPREVENTIVIANNULLATISoapIn" />
+			<output message="wsdlns:WinityPro.ELENCOPREVENTIVIANNULLATISoapOut" />
+		</operation>
+		<operation name="CONFERMARICEZIONEPREVENTIVIANNULLATI">
+			<input message="wsdlns:WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATISoapIn" />
+			<output message="wsdlns:WinityPro.CONFERMARICEZIONEPREVENTIVIANNULLATISoapOut" />
+		</operation>
+	</portType>
+	<binding name="WinityProSoapBinding" type="wsdlns:WinityProSoapPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="GETPREVENTIVIAPERTI">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.GETPREVENTIVIAPERTI" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="APPROVAPREVENTIVO">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.APPROVAPREVENTIVO" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="RIFIUTARICHIESTA">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.RIFIUTARICHIESTA" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="CONFERMARICEZIONE">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.CONFERMARICEZIONE" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATA">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.ELENCOPREVENTIVICONDATAESECUZIONEVALORIZZATA" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="CONFERMARICEZIONEDATAESECUZIONE">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.CONFERMARICEZIONEDATAESECUZIONE" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="GETALLEGATO">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.GETALLEGATO" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="ELENCOPREVENTIVIANNULLATI">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.ELENCOPREVENTIVIANNULLATI" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="CONFERMARICEZIONEPREVENTIVIANNULLATI">
+			<soap:operation soapAction="WebSnltaction/AWINITYPRO.CONFERMARICEZIONEPREVENTIVIANNULLATI" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="WinityPro">
+		<port name="WinityProSoapPort" binding="wsdlns:WinityProSoapBinding">
+			<soap:address location="http://localhost/SNLT_WSNetTest/awinitypro.aspx" />
+		</port>
+	</service>
+</definitions>
